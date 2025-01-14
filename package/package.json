@@ -1,0 +1,15 @@
+{
+  "name": "strix-ai",
+  "version": "0.0.1",
+  "description": "A powerful package designed for dynamic localization, enabling seamless updates to HTML content in different languages using JSON data.",
+  "main": "index.js",
+  "keywords": [
+    "utility",
+    "DOM",
+    "JSON",
+    "dynamic-localization",
+    "strix-ai"
+  ],
+  "author": "Divyanshu Dhruv",
+  "license": "MIT"
+}
