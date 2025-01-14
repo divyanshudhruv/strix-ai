@@ -1,0 +1,12 @@
+/* TEAM */
+Lead Developer: Divyanshu Dhruv
+Contributors: None
+UI/UX Designer: None
+Special Thanks: The Strix community
+
+/* WEBSITE */
+Site: https://strix-ai.vercel.app
+GitHub: https://github.com/divyanshudhruv/strix-ai
+
+/* THANKS */
+Thank you to all the contributors, community members, and supporters! We appreciate your help in making this project better.
