@@ -18,8 +18,8 @@ function App() {
   const [isAnswerReady, setIsAnswerReady] = useState<boolean>(false); // Tracks if answer is ready
 
   function removeError() {
-    let f = formattedJson;
-    let e = error;
+    let f = formattedJson + globalLanguage;
+    let e = error + globalBasePrompt;
     let i = isAnswerReady;
     let a = f + e + i;
     a = "removeError";
