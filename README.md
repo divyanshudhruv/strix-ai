@@ -11,8 +11,7 @@
 ![Top language](https://img.shields.io/github/languages/top/divyanshudhruv/strix-ai.svg?style=for-the-badge)
 
 <br>
-
-<img src="https://vercel.celsiusnarhwal.dev/api/divyanshudhruv/strix-ai" height="40">
+<table><tr><th><img src="https://vercel.celsiusnarhwal.dev/api/divyanshudhruv/strix-ai" height="40"></th><th><a href="https://github.com/mostypc123/XediX"><img src="https://xedix.w3spaces.com/xedix-shield.png" alt="Made with XediX" height="35"></a></th></tr></table>
 
 <Br>
 
