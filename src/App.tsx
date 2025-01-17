@@ -45,6 +45,13 @@ function App() {
   let globalLanguage = localStorage.getItem("gLanguage") || "English"; // Default to English
   let globalBasePrompt = localStorage.getItem("gPrompt") || " "; // Default to none
 
+  function removeExtraError() {
+    let l = globalLanguage;
+    let b = globalBasePrompt;
+    let a = b + l;
+    a = "removeExtraError";
+    console.log(a);
+  }
   async function askLang() {
     const { value: lang } = await Swal.fire({
       title: "Change language",
@@ -116,6 +123,7 @@ function App() {
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(e.target.value);
     setError(null);
+    removeExtraError();
   };
 
   // Handle button click for parsing JSON and getting AI answer
