@@ -66,7 +66,7 @@
 
 - [ ] `Drag and Drop Save`: Upload and save via drag and drop.<br>
 
-- [ ] `Base Prompt`: Customize the AI prompt.<br>
+- [x] `Base Prompt`: Customize the AI prompt.<br>
 
 - [ ] `Multiple AI APIs`: Use multiple AI APIs for better translations.<br>
 

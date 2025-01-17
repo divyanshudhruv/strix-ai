@@ -5,7 +5,7 @@ import "remixicon/fonts/remixicon.css";
 import Swal from "sweetalert2";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
-
+// import { Analytics } from "@vercel/analytics/react";
 // Setup for Google Generative AI model
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
@@ -17,8 +17,7 @@ function App() {
   const [answer, setAnswer] = useState<string>(""); // Stores the AI answer
   const [isAnswerReady, setIsAnswerReady] = useState<boolean>(false); // Tracks if answer is ready
 
-
-  function removeError(){
+  function removeError() {
     let f = formattedJson;
     let e = error;
     let i = isAnswerReady;
@@ -44,6 +43,7 @@ function App() {
   }
 
   let globalLanguage = localStorage.getItem("gLanguage") || "English"; // Default to English
+  let globalBasePrompt = localStorage.getItem("gPrompt") || " "; // Default to none
 
   async function askLang() {
     const { value: lang } = await Swal.fire({
@@ -52,31 +52,60 @@ function App() {
       inputLabel: "Enter the language",
       showCancelButton: true,
       inputValidator: (value) => {
-        if (!value) {
-          return "You need to write something!";
-        }
+        return value ? null : "You need to write something!";
       },
     });
 
     if (lang) {
-      globalLanguage = lang.trim();
+      const globalLanguage = lang.trim();
       localStorage.setItem("gLanguage", globalLanguage);
+
       setTimeout(() => {
         Swal.fire({
-          title: "Language changed to " + globalLanguage,
+          title: `Language changed to ${globalLanguage}`,
           timer: 1000,
           timerProgressBar: true,
         });
       }, 500);
     }
   }
+
+  async function askBasePromptPlus() {
+    const { value: prompt } = await Swal.fire({
+      title: "Add an additional prompt",
+      input: "text",
+      inputLabel: "Enter the prompt",
+      showCancelButton: true,
+    });
+
+    if (prompt) {
+      const globalPrompt = prompt.trim();
+      localStorage.setItem("gPrompt", globalPrompt);
+
+      setTimeout(() => {
+        Swal.fire({
+          title: `Added new prompt`,
+          timer: 1000,
+          timerProgressBar: true,
+        });
+      }, 500);
+    }
+  }
+
   let basePrompt;
+  let basePromptPlus;
   const askQuestion = async (prompt: string): Promise<string> => {
     try {
+      let globalLanguageF = localStorage.getItem("gLanguage");
+      let globalPromptF = localStorage.getItem("gPrompt");
+      basePromptPlus = globalPromptF;
       basePrompt = `
-      This is a JSON code. I want you to generate the same code, but translate the value of each key only into ${globalLanguage} and keep the language simple and use easy grammar. Do not translate the key. Ensure that the translations are based on the context of programming, UI design, web development, etc. After translating, return the updated code as a .txt file with proper indentation and remove any comments. Do not include any additional text or explanations. If the input is not a valid JSON, return an error message. If the input is a valid JSON, return the translated JSON.
+      This is a JSON code. I want you to generate the same code, but translate the value of each key only into ${globalLanguageF} and keep the language simple and use easy grammar. Do not translate the key. Ensure that the translations are based on the context of programming, UI design, web development, etc. After translating, return the updated code as a .txt file with proper indentation and remove any comments. Do not include any additional text or explanations. If the input is not a valid JSON, return an error message. If the input is a valid JSON, return the translated JSON and follow the next inline prompt if present strictly.
       `;
-      const result = await model.generateContent([basePrompt + prompt]);
+      const result = await model.generateContent([
+        basePrompt + prompt + "Use this prompt also:" + basePromptPlus,
+      ]);
+      localStorage.setItem("gPrompt", "");
       return result.response.text();
     } catch (error) {
       console.error("Error:", error);
@@ -272,7 +301,7 @@ function App() {
                             <div className="npm">Language</div>
                           </div>
                         </div>
-                        <div className="tool" onClick={stayTuned}>
+                        <div className="tool" onClick={askBasePromptPlus}>
                           <i className="ri-toggle-line"></i>
                           <div className="dropdown" id="dropdown">
                             <div className="npm">More</div>
