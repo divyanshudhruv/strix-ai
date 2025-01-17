@@ -195,7 +195,7 @@ a {
 }
 
 .bg-text::after {
-  content: "v0.0.1";
+  content: "v0.0.2";
   display: flex;
   position: absolute;
   padding-inline: 5px;

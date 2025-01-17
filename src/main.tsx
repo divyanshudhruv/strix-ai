@@ -1,10 +1,12 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
-import 'remixicon/fonts/remixicon.css'
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import React from "react";
+import App from "./App";
+import "remixicon/fonts/remixicon.css";
+// import { Analytics } from "@vercel/analytics/react";
+
+createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
     <App />
-  </StrictMode>,
-)
+  </React.StrictMode>
+);
