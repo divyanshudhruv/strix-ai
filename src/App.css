@@ -1,13 +1,11 @@
-/* Preconnect to Google Fonts to improve performance */
-
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap");
 
 body {
   background-color: #ffffff; /* or use a CSS variable if defined */
   padding: 0;
   margin: 0;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   font-family: "DM Sans", sans-serif;
 }
 a {
@@ -16,7 +14,7 @@ a {
 }
 * {
   box-sizing: border-box;
-  transition: 0.3s;
+  transition: color 0.3s, background-color 0.3s;
 }
 ::-webkit-scrollbar {
   display: none;
@@ -94,7 +92,6 @@ a {
   height: 100%;
   min-width: 300px;
   width: fit-content;
-  right: 0;
   background-color: transparent;
   align-items: center;
   justify-content: center;
@@ -103,12 +100,11 @@ a {
 .nav .right .item {
   display: flex;
   position: relative;
-  height: 100%;
   align-items: center;
   justify-content: center;
   width: 30px;
   height: 30px;
-  font-family: "Plus Jakarta Sans";
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: normal;
   font-size: 14px;
   color: #6a6d8a;
@@ -121,7 +117,7 @@ a {
   border-radius: 5px;
   padding-inline: 5px;
   height: 40px;
-  width: calc(100px) !important;
+  width: 100px !important;
 }
 .nav .right .item.bg:hover {
   background-color: #ebedf0 !important;
@@ -241,8 +237,7 @@ a {
 
   padding-top: 1px;
   padding-bottom: 25px;
-  align-items: center;
-  justify-content: center;
+ 
   position: relative;
   margin-top: 40px;
   border-radius: 12px;
@@ -276,7 +271,7 @@ a {
   -webkit-mask-composite: destination-in;
   mask-composite: intersect;
   transform: rotate(0deg);
-  animation: spin 1.5s linear infinite; /* Spinning effect */
+  animation: spin 2s linear infinite; /* Spinning effect */
 }
 
 .input .loading::after {
@@ -468,8 +463,6 @@ a {
   padding-top: 13.5px;
   padding-bottom: 13.5px;
   flex-direction: row;
-  font-family: monospace;
-  color: #2c2d35;
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 14px;
   color: #6a6d8a;

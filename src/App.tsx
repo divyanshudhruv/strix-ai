@@ -5,8 +5,7 @@ import "remixicon/fonts/remixicon.css";
 import Swal from "sweetalert2";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
-// import { Analytics } from "@vercel/analytics/react";
-// Setup for Google Generative AI model
+
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
@@ -41,9 +40,6 @@ function App() {
     let valueOfTemp = textareaTemp.value;
     navigator.clipboard.writeText(valueOfTemp);
   }
-
-  // let globalLanguage = localStorage.getItem("gLanguage") || "English";
-  // let globalBasePrompt = localStorage.getItem("gPrompt") || " ";
 
   async function askLang() {
     const { value: lang } = await Swal.fire({
@@ -178,35 +174,6 @@ function App() {
       inputDiv.style.minHeight = "112px";
     }
   };
-
-  /*const strixJSON: Record<string, string> = {
-    title: "Welcome to Strix",
-    subtitle: "Effortless Localization",
-    buttonText: "Get Started",
-    description: "Translate seamlessly and preview live.",
-  };
-
-  function strixAdd(data: Record<string, string>): void {
-    const container = document.getElementById("useStrix");
-
-    if (!container) {
-      console.error("Container with id 'strix' not found.");
-      return;
-    }
-
-    Object.keys(data).forEach((key) => {
-      const element = container.querySelector<HTMLElement>(`#${key}`);
-      if (element) {
-        // Update its innerHTML with the corresponding JSON value
-        element.innerHTML = data[key];
-      } else {
-        console.warn(`Element with id '${key}' not found in container.`);
-      }
-    });
-  }
-  window.onload = () => {
-    strixAdd(strixJSON);
-  };*/
 
   return (
     <Router>
@@ -352,7 +319,7 @@ function App() {
             element={
               <div className="main">
                 <div className="bg-text-2">
-                  Playground
+                  Playground<br></br>
                   <span>In the Lab... Testing Awesome!</span>
                 </div>
               </div>
@@ -363,7 +330,7 @@ function App() {
             element={
               <div className="main">
                 <div className="bg-text-2">
-                  Others
+                  Others<br></br>
                   <span>Magic in the Making... Hold Tight!</span>
                 </div>
               </div>
