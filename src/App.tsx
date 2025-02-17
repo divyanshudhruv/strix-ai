@@ -21,8 +21,8 @@ function App() {
     let e = error;
     let i = isAnswerReady;
     let a = f + e + i;
-    a = "removeError";
     console.log(a);
+    console.clear();
   }
 
   function stayTuned() {
@@ -132,7 +132,7 @@ function App() {
       setError(null);
 
       const fetchedAnswer = await askQuestion(jsonString);
-      const trimmedAnswer = fetchedAnswer.replace(/^[^{]*|[^}]*$/g, "");
+      const trimmedAnswer = fetchedAnswer.replace(/(^[^({]*|[^}]*$)/g, "");
 
       setAnswer(trimmedAnswer);
       setIsAnswerReady(true);
@@ -262,25 +262,25 @@ function App() {
                         JSON model <i className="ri-arrow-down-s-line"></i>
                       </div>
                       <div className="container-tools">
-                        <div className="tool" onClick={askLang}>
+                        <div className="tool" onClick={askLang} onKeyPress={(e) => { if (e.key === '+') askLang(); }} tabIndex={0}>
                           <i className="ri-flashlight-line"></i>
                           <div className="dropdown" id="dropdown">
                             <div className="npm">Language</div>
                           </div>
                         </div>
-                        <div className="tool" onClick={askBasePromptPlus}>
+                        <div className="tool" onClick={askBasePromptPlus} onKeyPress={(e) => { if (e.key === '+') askBasePromptPlus(); }} tabIndex={0}>
                           <i className="ri-toggle-line"></i>
                           <div className="dropdown" id="dropdown">
                             <div className="npm">More</div>
                           </div>
                         </div>
-                        <div className="tool" onClick={copyGenerated}>
+                        <div className="tool" onClick={copyGenerated} onKeyPress={(e) => { if (e.key === '+') copyGenerated(); }} tabIndex={0}>
                           <i className="ri-file-text-line"></i>
                           <div className="dropdown" id="dropdown">
                             <div className="npm">Copy</div>
                           </div>
                         </div>
-                        <div className="tool" onClick={stayTuned}>
+                        <div className="tool" onClick={stayTuned} onKeyPress={(e) => { if (e.key === '+') stayTuned(); }} tabIndex={0}>
                           <i className="ri-cloudy-line"></i>
                           <div className="dropdown" id="dropdown">
                             <div className="npm">Save</div>
@@ -291,6 +291,8 @@ function App() {
                           style={{ marginLeft: "10px" }}
                           id="jsonEnter"
                           onClick={handleButtonClick}
+                          onKeyPress={(e) => { if (e.key === '+') handleButtonClick(); }} 
+                          tabIndex={0}
                         >
                           <i className="ri-arrow-right-line"></i>
                           <div className="dropdown" id="dropdown">
